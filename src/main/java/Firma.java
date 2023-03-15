@@ -7,6 +7,9 @@
  * @author Konrad
  */
 
+import wyjatki.WrongLenghtException;
+import wyjatki.WrongNazwaException;
+
 import java.util.List;
 import java.util.ArrayList;
 
@@ -14,10 +17,13 @@ public class Firma {
     protected String Nazwa, KRS;//skladowe odpowiedzialne za nazwe i numer krs fimry
     private List<KlientBanku> Firmas;
 
-    public Firma(String Nazwa, String KRS) {
+    public Firma(String Nazwa, String KRS) throws WrongLenghtException,WrongNazwaException{
+        if(Nazwa.contains(" "))
+            throw new WrongNazwaException("Nazwa firmy zawiera spacje!");
+        if(KRS.length()!=10)
+            throw new WrongLenghtException("Zla dlugosc KRS");
         this.Nazwa = Nazwa;
         this.KRS = KRS;
-
     }
 
     public Firma() {

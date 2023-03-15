@@ -3,11 +3,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 
-/**
- * @author Konrad
- */
+import wyjatki.WrongLenghtException;
+import wyjatki.WrongNazwaException;
+
 public class KlientCentrum extends Firma {
-    public KlientCentrum(String name, String krs) {
+    public KlientCentrum(String name, String krs) throws WrongNazwaException, WrongLenghtException {
         super(name, krs);
     }
 

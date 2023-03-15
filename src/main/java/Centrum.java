@@ -1,7 +1,12 @@
+import wyjatki.WrongKwotaException;
+import wyjatki.WrongLenghtException;
+import wyjatki.WrongNazwaException;
+
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.io.File;
+import java.util.EmptyStackException;
 import java.util.Scanner;
 
 public class Centrum {
@@ -33,9 +38,6 @@ public class Centrum {
     }
 
     public void zapisDoArchiwum() throws FileNotFoundException {
-        File plik = new File("nazwa_pliku.txt");
-        if (plik == null)
-            System.out.println("Brak pliku!");
         PrintWriter zapis = new PrintWriter("Archiwum.txt");
         for (Transakcja transakcja : listaTransakcji) {
             zapis.println(transakcja.toString());
@@ -43,11 +45,11 @@ public class Centrum {
         zapis.close();
     }
 
-    public void odczytZArchiwum() throws FileNotFoundException {
+    public void odczytZArchiwum() throws FileNotFoundException, WrongNazwaException, WrongLenghtException {
         File plik = new File("Archiwum.txt");
         Scanner in = new Scanner(plik);
         if (!plik.exists())
-            System.out.println("Brak pliku!");
+            throw new FileNotFoundException("Plik nie istnieje!");
         String linia;
         while (in.hasNext()) {
             linia = in.nextLine();
@@ -69,8 +71,17 @@ public class Centrum {
         }
     }
 
-    public boolean Autoryzacja(double Kwota, String NrKarty, KlientCentrum firma) {
-        System.out.println(bank.getListeKlientow().size());
+    public boolean Autoryzacja(double Kwota, String NrKarty, KlientCentrum firma) throws WrongLenghtException,WrongKwotaException,NullPointerException {
+        if(Kwota<0)
+            throw new WrongKwotaException(Double.toString(Kwota));
+        if(NrKarty.length()!=16)
+            throw new WrongLenghtException("Zła dlugosc karty!");
+        if(firma == null)
+            throw new NullPointerException("Nie ma tekiej firmy!");
+        if(bank == null)
+            throw new NullPointerException("Nie ma banku!");
+        if(bank.getListeKlientow().size()==0)
+            throw new EmptyStackException();
         if (listaKlientowCentrum.contains(firma)) {
             for (KlientBanku klient : bank.getListeKlientow())
                 for (Karta karta : klient.getKonto().getKarty())
@@ -89,11 +100,11 @@ public class Centrum {
     }
 
 
-    public String toStringKlientCentrum() {
+    public String toStringKlientCentrum() throws EmptyStackException{
         String string = "";
         int i = 0;
         if (listaKlientowCentrum.size() == 0)
-            return "Nie ma firm!";
+            throw new EmptyStackException();
         else {
             for (Firma klientCentrum : listaKlientowCentrum) {
                 string += (i++) + " " + klientCentrum.getNazwa() + " " + klientCentrum.getKRS() + "\n";

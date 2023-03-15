@@ -1,9 +1,8 @@
+import wyjatki.WrongLenghtException;
+import wyjatki.WrongNazwaException;
 
-/**
- * @author Konrad
- */
 public class Firmytransportowe extends KlientCentrum {
-    public Firmytransportowe(String Nazwa, String KRS) {
+    public Firmytransportowe(String Nazwa, String KRS) throws WrongNazwaException, WrongLenghtException {
         super(Nazwa, KRS);
     }
 }

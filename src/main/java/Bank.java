@@ -1,3 +1,5 @@
+import wyjatki.WrongLenghtException;
+
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -9,7 +11,7 @@ public class Bank {
 
     private String resztaNumeruKarty() {// metoda tworzaca numer karty
         Random generator = new Random();
-        return Integer.toString(generator.nextInt(100000000, 999999999)) + Integer.toString(generator.nextInt(10000, 99999));
+        return Integer.toString(generator.nextInt(100000000, 999999999)) + Integer.toString(generator.nextInt(100000, 999999));
     }
 
     public void dodajKlienta(KlientBanku klient) {//metoda dodajaca firme do klientow centrum
@@ -67,7 +69,9 @@ public class Bank {
         return null;
     }
 
-    public Konto getKontoPoNumerze(String numer) {//metoda zwracajaca honto po numerze konta
+    public Konto getKontoPoNumerze(String numer) throws WrongLenghtException {//metoda zwracajaca honto po numerze konta
+        if(numer.length()!=26)
+            throw new WrongLenghtException("Zla dlugosc numeru konta");
         for (KlientBanku klientBanku : listaKlientowBanku) {
             if (klientBanku.getKonto().getNumerKonta().equals(numer))
                 return klientBanku.getKonto();

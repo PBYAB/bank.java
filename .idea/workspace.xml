@@ -4,32 +4,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4620078e-8c29-4060-b989-00cc0aefb1a3" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_projectlombok_lombok_1_18_24.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ProjektPO.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Bank.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Centrum.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Firma.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Firmytransportowe.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/KartaDebetowa.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/KartaKredytowa.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Karta_Bankomatowa.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/KlientBanku.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/KlientCentrum.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Konto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Sklep.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Transakcja.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ZakładyUsługowe.java" afterDir="false" />
+    <list default="true" id="4620078e-8c29-4060-b989-00cc0aefb1a3" name="Changes" comment="gotowe">
+      <change afterPath="$PROJECT_DIR$/src/main/java/wyjatki/WrongKwotaException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/wyjatki/WrongLenghtException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/wyjatki/WrongNazwaException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Bank.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Bank.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Centrum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Centrum.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Firma.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Firma.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Firmytransportowe.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Firmytransportowe.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/KartaDebetowa.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/KartaDebetowa.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/KartaKredytowa.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/KartaKredytowa.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Karta_Bankomatowa.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Karta_Bankomatowa.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/KlientCentrum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/KlientCentrum.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Sklep.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Sklep.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ZakładyUsługowe.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ZakładyUsługowe.java" afterDir="false" />
     </list>
     <list id="dfc5eecb-8cc7-4f83-87ed-e4449a5beeba" name="Changes by HP" comment="">
       <change afterPath="$PROJECT_DIR$/src/main/java/Osoba.java" afterDir="false" />
@@ -52,6 +42,9 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="ProjectErrors" />
+  </component>
   <component name="ProjectId" id="2ARNnyFAc2uaIj7Vvsgm8Tg2ALL" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
@@ -69,10 +62,12 @@
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
     "codeWithMe.voiceChat.enabledByDefault": "false",
+    "last_opened_file_path": "C:/Users/Michał/problematyczny folder/Pulpit/2sem/po/java/ProjektPO",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "preferences.pluginManager"
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
   <component name="RunManager">
@@ -101,8 +96,29 @@
       <workItem from="1655149263119" duration="252000" />
       <workItem from="1655219537641" duration="612000" />
       <workItem from="1655395921375" duration="36402000" />
-      <workItem from="1655657149172" duration="8588000" />
+      <workItem from="1655657149172" duration="8651000" />
+      <workItem from="1655725407269" duration="1378000" />
+      <workItem from="1655727328866" duration="9210000" />
+      <workItem from="1655736763306" duration="119000" />
+      <workItem from="1655747472210" duration="352000" />
+      <workItem from="1655752538447" duration="73000" />
+      <workItem from="1655795545897" duration="807000" />
+      <workItem from="1655799423764" duration="1549000" />
+      <workItem from="1656348723883" duration="152000" />
+      <workItem from="1656391239182" duration="795000" />
+      <workItem from="1661705361268" duration="2919000" />
+      <workItem from="1665299474123" duration="175000" />
+      <workItem from="1678905436384" duration="14000" />
+      <workItem from="1678905794590" duration="106000" />
     </task>
+    <task id="LOCAL-00001" summary="gotowe">
+      <created>1655673459861</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1655673459861</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -118,5 +134,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="gotowe" />
+    <option name="LAST_COMMIT_MESSAGE" value="gotowe" />
   </component>
 </project>

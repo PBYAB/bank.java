@@ -1,149 +1,257 @@
+import wyjatki.WrongKwotaException;
+import wyjatki.WrongLenghtException;
+import wyjatki.WrongNazwaException;
+
 import javax.lang.model.element.VariableElement;
 import java.io.FileNotFoundException;
+import java.util.EmptyStackException;
 import java.util.Scanner;
 
 public class Main {
-    private static void ObslugaZadan(Centrum centrum)//obsługa żądań autoryzacji (kwota, data, dane karty) - decyzja zależna od rodzaju karty
-    {
+    private static void ObslugaZadan(Centrum centrum) throws NullPointerException,IndexOutOfBoundsException//obsługa żądań autoryzacji (kwota, data, dane karty) - decyzja zależna od rodzaju karty
+    {   if(centrum == null)
+        throw new NullPointerException("Nie ma centrum");
+        try{
         if (centrum.getListaKlientow().size() != 0) {
             System.out.println(centrum.toStringKlientCentrum());
             Scanner scan = new Scanner(System.in);
-            System.out.println("Podaj index firmy: ");
-            int index = scan.nextInt();
-            System.out.println("Podaj numer karty: ");
-            String nrKarty = scan.next();
-            System.out.println("Podaj kwote transakcji:");
-            double kwota = scan.nextDouble();
-            if (centrum.Autoryzacja(kwota, nrKarty, centrum.getKlientaCentrum(index)))
-                System.out.println("Transakcja zakoczona powodzeniem!");
-            else System.out.println("Transakcja zakoczona niepowodzeniem!");
-        } else System.out.println("Brak firm w bazie centrum");
-    }
-
-    private static void zapisOdczyt(Centrum centrum) throws FileNotFoundException {//zapis i odczyt stanu systemu na dysk (realizacja archiwum operacji w postaci odrębnego pliku)
-        System.out.println("Podaj co chcesz zrobic: (1- zapisac stan na dysk, 2 - odczytac stan dysku, 0 - wyjsc)");
-        Scanner scan = new Scanner(System.in);
-        int wybor = scan.nextInt();
-        switch (wybor) {
-            case 1:
-                centrum.zapisDoArchiwum();
-                break;
-            case 2:
-                centrum.odczytZArchiwum();
-                break;
-            case 0:
-                break;
-        }
-    }
-
-    private static void zarzazdanieFirmami(Centrum centrum) {//zarządzenie firmami korzystającymi z centrum centrum i bankami (dodawanie, usuwanie, przegląd)
-        System.out.println("Podaj co chcesz zrobic: (1- zobaczyc firmy, 2 - dodac firme,3 - usunac firme, 0 - wyjsc)");
-        Scanner scan = new Scanner(System.in);
-        int wybor = scan.nextInt();
-        switch (wybor) {
-            case 1:
-                System.out.println(centrum.toStringKlientCentrum());
-                break;
-            case 2:
-                System.out.println("Podaj nazwe firmy(bez spacji):");
-                String nazwaFirmy = scan.next();
-                System.out.println("Podaj KRS firmy:");
-                String krsFirmy = scan.next();
-                System.out.println("Podaj rodzaj firmy (1 - sklep, 2 - Zaklad uslugowy,3 - firma transportowa");
-                int wybor2 = scan.nextInt();
-                if (wybor2 == 1)
-                    centrum.getListaKlientow().add(new Sklep(nazwaFirmy, krsFirmy));
-                if (wybor2 == 2)
-                    centrum.getListaKlientow().add(new ZakładyUsługowe(nazwaFirmy, krsFirmy));
-                if (wybor2 == 3)
-                    centrum.getListaKlientow().add(new Firmytransportowe(nazwaFirmy, krsFirmy));
-                break;
-            case 3:
-                System.out.println(centrum.toStringKlientCentrum());
-                System.out.println("Podaj index firmy ktora chcesz usunac:");
-                int index = scan.nextInt();
-                centrum.getListaKlientow().remove(index);
-                System.out.println("Klient usuniety!");
-                System.out.println(centrum.toStringKlientCentrum());
-                break;
-            case 0:
-                break;
-        }
-    }
-
-    private static void zarzazdanieKartami(Centrum centrum, Bank bank, String nrKonta) {//zarządzanie kartami (przypisana do klienta banku, wydana przez bank)
-        Scanner scan = new Scanner(System.in);
-        if (bank.getKontoPoNumerze(nrKonta).getKarty().size() != 0) {
-            System.out.println("Wybierrz co chcesz zrobic(1 - zobaczyc swoje karty, 2 - dodace karte, 3 - usunac karte,4 - wplacic, 0 - przerwac)");
-            int wybor = scan.nextInt();
-            switch (wybor) {
-                case 1:
-                    System.out.println(bank.getKontoPoNumerze(nrKonta).toString());
-                    break;
-                case 2:
-                    System.out.println("podaj jaka chcesz dodac karte: (1 - bankomatowa, 2 - debetowa, 3 - kredytowa)");
-                    int wybor2 = scan.nextInt();
-                    bank.getKontoPoNumerze(nrKonta).przypiszKarte(bank.wydajKarte(wybor2, bank.getWlascicielPoNumerzeKarty(nrKonta)));
-                    break;
-                case 3:
-                    System.out.println("Podaj index karty ktora chcesz usunac: ");
-                    System.out.println(bank.getKontoPoNumerze(nrKonta).toString());
+            while(true){
+                try{
+                    System.out.println("Podaj index firmy: ");
                     int index = scan.nextInt();
-                    bank.getKontoPoNumerze(nrKonta).getKarty().remove(index);
-                    break;
-                case 4:
-                    System.out.println(bank.getKontoPoNumerze(nrKonta).toString());
-                    System.out.println("Podaj ile chcesz wplacic");
+                    if(index>centrum.getListaKlientow().size()-1||index<0)
+                        throw new IndexOutOfBoundsException("Index firmy z poza zakresu");
+                    System.out.println("Podaj numer karty: ");
+                    String  nrKarty = scan.next();
+                    System.out.println("Podaj kwote transakcji:");
                     double kwota = scan.nextDouble();
-                    bank.getKontoPoNumerze(nrKonta).wplac(kwota);
+                    if (centrum.Autoryzacja(kwota, nrKarty, centrum.getKlientaCentrum(index)))
+                        System.out.println("Transakcja zakoczona powodzeniem!");
+                    else System.out.println("Transakcja zakoczona niepowodzeniem!");
+                }catch (WrongLenghtException wrongLenghtException){
+                    System.out.println("Podaj jeszcze raz");
+                    System.out.println("------------------------------");
+                }catch (WrongKwotaException wrongKwotaException){
+                    System.out.println("Podaj kwote jeszcze raz");
+                    System.out.println("------------------------------");
+                }catch (IndexOutOfBoundsException indexOutOfBoundsException){
+                    System.out.println("Podaj index firmy jeszcze raz");
+                    System.out.println("------------------------------");
+                }finally {
                     break;
-                case 0:
-                    break;
+                }
             }
-        } else System.out.println("Brak kont banku w bazie firm");
+        } else System.out.println("Brak firm w bazie centrum");
+    }catch (NullPointerException nullPointerException){
+            System.out.println("Brak firmy!");
+            System.out.println("------------------------------");
+        }
+
     }
 
-    private static void przeszukiwaniePo1(Centrum centrum) {
+    private static void zapisOdczyt(Centrum centrum) throws IndexOutOfBoundsException {//zapis i odczyt stanu systemu na dysk (realizacja archiwum operacji w postaci odrębnego pliku)
+        while (true){
+            try{
+                System.out.println("Podaj co chcesz zrobic: (1- zapisac stan na dysk, 2 - odczytac stan dysku, 0 - wyjsc)");
+                Scanner scan = new Scanner(System.in);
+                int wybor = scan.nextInt();
+                if(wybor!=1&&wybor!=2&&wybor!=0)
+                    throw new IndexOutOfBoundsException();
+                switch (wybor) {
+                    case 1:
+                        centrum.zapisDoArchiwum();
+                        break;
+                    case 2:
+                        centrum.odczytZArchiwum();
+                        break;
+                    case 0:
+                        break;
+                                }
+                } catch (IndexOutOfBoundsException indexOutOfBoundsException){
+                System.out.println("wybor z poza dostepnych!");
+                System.out.println("------------------------------");
+                }catch (FileNotFoundException | WrongNazwaException | WrongLenghtException fileNotFoundException){
+                System.out.println("Sprobuj ponownie!");
+                System.out.println("------------------------------");
+            }finally {
+                break;
+            }
+                }
+            }
+    private static void zarzazdanieFirmamicase3(Centrum centrum){
         Scanner scan = new Scanner(System.in);
-        System.out.println("Podaj po czym chcesz przeszukiwac");
-        System.out.println("1 - krs firmy");
-        System.out.println("2 - numer karty");
-        System.out.println("3 - wlasciciel");
-        System.out.println("4 - kwota");
-        int wybor = scan.nextInt();
-        switch (wybor) {
-            case 1:
-                System.out.println("Podaj KRS:");
-                String nrKrs = scan.next();
-                for (Transakcja transakcja : centrum.getListaTransakcji()) {
-                    if (transakcja.getKrs().equals(nrKrs))
-                        System.out.println(transakcja);
+        System.out.println(centrum.toStringKlientCentrum());
+        System.out.println("Podaj index firmy ktora chcesz usunac:");
+        int index = scan.nextInt();
+        if(index>centrum.getListaKlientow().size()-1&&index<0)
+            throw new IndexOutOfBoundsException("Index firmy z poza zakresu");
+        centrum.getListaKlientow().remove(index);
+        System.out.println("Klient usuniety!");
+        System.out.println(centrum.toStringKlientCentrum());
+    }
+    private static void zarzazdanieFirmamicase2(Centrum centrum) throws WrongNazwaException, WrongLenghtException {
+        Scanner scan = new Scanner(System.in);
+        System.out.println("Podaj nazwe firmy(bez spacji):");
+        String nazwaFirmy = scan.next();
+        System.out.println("Podaj KRS firmy:");
+        String krsFirmy = scan.next();
+        System.out.println("Podaj rodzaj firmy (1 - sklep, 2 - Zaklad uslugowy,3 - firma transportowa");
+        int wybor2 = scan.nextInt();
+        if (wybor2 == 1)
+            centrum.getListaKlientow().add(new Sklep(nazwaFirmy, krsFirmy));
+        if (wybor2 == 2)
+            centrum.getListaKlientow().add(new ZakładyUsługowe(nazwaFirmy, krsFirmy));
+        if (wybor2 == 3)
+            centrum.getListaKlientow().add(new Firmytransportowe(nazwaFirmy, krsFirmy));
+    }
+    private static void zarzazdanieFirmami(Centrum centrum) throws NullPointerException{//zarządzenie firmami korzystającymi z centrum centrum i bankami (dodawanie, usuwanie, przegląd)
+        if(centrum == null)
+            throw new NullPointerException();
+        while(true){
+            try{
+                System.out.println("Podaj co chcesz zrobic: (1- zobaczyc firmy, 2 - dodac firme,3 - usunac firme, 0 - wyjsc)");
+                Scanner scan = new Scanner(System.in);
+                int wybor = scan.nextInt();
+                if(wybor!=1&&wybor!=2&&wybor!=3&&wybor!=0)
+                    throw new IndexOutOfBoundsException();
+                switch (wybor) {
+                    case 1:
+                        System.out.println(centrum.toStringKlientCentrum());
+                        break;
+                    case 2:
+                        zarzazdanieFirmamicase2(centrum);
+                        break;
+                    case 3:
+                        zarzazdanieFirmamicase3(centrum);
+                        break;
+                    case 0:
+                        break;
                 }
+            }catch (NullPointerException nullPointerException){
+                System.out.println("------------------------------");
+                System.out.println("Centrum nie istnieje!");
+            }catch (EmptyStackException emptyStackException){
+                System.out.println("------------------------------");
+                System.out.println("Lista klientow centrum jest pusta");
+            }catch (IndexOutOfBoundsException indexOutOfBoundsException){
+                System.out.println("------------------------------");
+                System.out.println("Wybor z poza dostepnych!");
+            } catch (WrongNazwaException e) {
+                throw new RuntimeException(e);
+            } catch (WrongLenghtException e) {
+                throw new RuntimeException(e);
+            }finally {
                 break;
-            case 2:
-                System.out.println("Podaj numer karty:");
-                String nrKarty = scan.next();
-                for (Transakcja transakcja : centrum.getListaTransakcji()) {
-                    if (transakcja.getNrKarty().equals(nrKarty))
-                        System.out.println(transakcja);
+            }
+        }
+    }
+
+    private static void zarzazdanieKartami(Centrum centrum, Bank bank, String nrKonta) throws IndexOutOfBoundsException,EmptyStackException,WrongLenghtException{//zarządzanie kartami (przypisana do klienta banku, wydana przez bank)
+        Scanner scan = new Scanner(System.in);
+        if (bank.getKontoPoNumerze(nrKonta).getKarty().size() == 0)
+        throw new EmptyStackException();
+        while(true){
+            try{
+                System.out.println("Wybierrz co chcesz zrobic(1 - zobaczyc swoje karty, 2 - dodace karte, 3 - usunac karte,4 - wplacic, 0 - przerwac)");
+                int wybor = scan.nextInt();
+                if(wybor!=1&&wybor!=2&&wybor!=3&&wybor!=4&&wybor!=0)
+                    throw new IndexOutOfBoundsException();
+                switch (wybor) {
+                    case 1:
+                        System.out.println(bank.getKontoPoNumerze(nrKonta).toString());
+                        break;
+                    case 2:
+                        System.out.println("podaj jaka chcesz dodac karte: (1 - bankomatowa, 2 - debetowa, 3 - kredytowa)");
+                        int wybor2 = scan.nextInt();
+                        bank.getKontoPoNumerze(nrKonta).przypiszKarte(bank.wydajKarte(wybor2, bank.getWlascicielPoNumerzeKarty(nrKonta)));
+                        break;
+                    case 3:
+                        System.out.println("Podaj index karty ktora chcesz usunac: ");
+                        System.out.println(bank.getKontoPoNumerze(nrKonta).toString());
+                        int index = scan.nextInt();
+                        bank.getKontoPoNumerze(nrKonta).getKarty().remove(index);
+                        break;
+                    case 4:
+                        System.out.println(bank.getKontoPoNumerze(nrKonta).toString());
+                        System.out.println("Podaj ile chcesz wplacic");
+                        double kwota = scan.nextDouble();
+                        bank.getKontoPoNumerze(nrKonta).wplac(kwota);
+                        break;
+                    case 0:
+                        break;}
+            }catch (EmptyStackException emptyStackException){
+                System.out.println("------------------------------");
+                System.out.println("Konto nie posiada kart");
+            }catch (IndexOutOfBoundsException indexOutOfBoundsException){
+                System.out.println("------------------------------");
+                System.out.println("Wybor z poza dsotepnych!");
+            }finally {
+                break;
+            }
+        }
+    }
+
+    private static void przeszukiwaniePo1(Centrum centrum) throws WrongLenghtException,WrongKwotaException{
+        while (true){
+            try{
+                Scanner scan = new Scanner(System.in);
+                System.out.println("Podaj po czym chcesz przeszukiwac");
+                System.out.println("1 - krs firmy");
+                System.out.println("2 - numer karty");
+                System.out.println("3 - wlasciciel");
+                System.out.println("4 - kwota");
+                int wybor = scan.nextInt();
+                switch (wybor) {
+                    case 1:
+                        System.out.println("Podaj KRS:");
+                        String nrKrs = scan.next();
+                        if(nrKrs.length()!=10)
+                            throw new WrongLenghtException("Zla dlugosc KRS");
+                        for (Transakcja transakcja : centrum.getListaTransakcji()) {
+                            if (transakcja.getKrs().equals(nrKrs))
+                                System.out.println(transakcja);
+                        }
+                        break;
+                    case 2:
+                        System.out.println("Podaj numer karty:");
+                        String nrKarty = scan.next();
+                        if(nrKarty.length()!=16)
+                            throw new WrongLenghtException("Zla dlugosc numeru karty");
+                        for (Transakcja transakcja : centrum.getListaTransakcji()) {
+                            if (transakcja.getNrKarty().equals(nrKarty))
+                                System.out.println(transakcja);
+                        }
+                        break;
+                    case 3:
+                        System.out.println("Podaj pesel:");
+                        String pesel = scan.next();
+                        if(pesel.length()!=11)
+                            throw new WrongLenghtException("Zla dlugosc peselu");
+                        for (Transakcja transakcja : centrum.getListaTransakcji()) {
+                            if (transakcja.getPesel().equals(pesel))
+                                System.out.println(transakcja);
+                        }
+                        break;
+                    case 4:
+                        System.out.println("Podaj kwote:");
+                        double kwota = scan.nextDouble();
+                        if(kwota<0)
+                            throw new WrongKwotaException("Ujemna kwota!");
+                        for (Transakcja transakcja : centrum.getListaTransakcji()) {
+                            if (transakcja.getKwota()==kwota)
+                                System.out.println(transakcja);
+                        }
+                        break;
                 }
+            }catch (WrongLenghtException wrongLenghtException){
+                System.out.println("------------------------------");
+                System.out.println("Sprobuj podac jescze raz!");
+            }catch (WrongKwotaException wrongKwotaException){
+                System.out.println("------------------------------");
+                System.out.println("Sprobuj podac jescze raz!");
+            }finally {
                 break;
-            case 3:
-                System.out.println("Podaj pesel:");
-                String pesel = scan.next();
-                for (Transakcja transakcja : centrum.getListaTransakcji()) {
-                    if (transakcja.getPesel().equals(pesel))
-                        System.out.println(transakcja);
-                }
-                break;
-            case 4:
-                System.out.println("Podaj kwote:");
-                double kwota = scan.nextDouble();
-                for (Transakcja transakcja : centrum.getListaTransakcji()) {
-                    if (transakcja.getKwota()==kwota)
-                        System.out.println(transakcja);
-                }
-                break;
+            }
         }
     }
     private static void przeszukiwaniePo2(Centrum centrum){
@@ -296,22 +404,34 @@ public class Main {
         }
     }
 
-    private static void przeszukiwanie(Centrum centrum){
-        Scanner scan = new Scanner(System.in);
-        System.out.println("Podaj co chcesz zrobi: ( 1 - przeszukiwanie po 1 warunku, 2 - przeszukiwanie po 2 warunkach, 3 - przeszukiwenia po alternatywnych warunkach)");
-        int wybor = scan.nextInt();
-        switch (wybor){
-            case 1:
-                przeszukiwaniePo1(centrum);break;
+    private static void przeszukiwanie(Centrum centrum) throws WrongKwotaException, WrongLenghtException {
 
-            case 2:
-                przeszukiwaniePo2(centrum);break;
-            case 3:
-                przeszukiwaniePo2lub(centrum);break;
-        }
+      while (true) {
+          try{
+              Scanner scan = new Scanner(System.in);
+              System.out.println("Podaj co chcesz zrobi: ( 1 - przeszukiwanie po 1 warunku, 2 - przeszukiwanie po 2 warunkach, 3 - przeszukiwenia po alternatywnych warunkach)");
+              int wybor = scan.nextInt();
+              if(wybor!=1&&wybor!=2&&wybor!=3)
+                  throw new IndexOutOfBoundsException("Opdowiedz z poza dostepnyvh!");
+              switch (wybor){
+                  case 1:
+                      przeszukiwaniePo1(centrum);break;
+
+                  case 2:
+                      przeszukiwaniePo2(centrum);break;
+                  case 3:
+                      przeszukiwaniePo2lub(centrum);break;
+              }
+          }catch (IndexOutOfBoundsException indexOutOfBoundsException){
+              System.out.println("------------------------------");
+              System.out.println("Sprobuj podac jescze raz!");
+          }finally {
+              break;
+          }
+      }
     }
 
-    public static void main(String[] args) throws FileNotFoundException {
+    public static void main(String[] args) throws FileNotFoundException, WrongLenghtException, WrongKwotaException {
         Centrum centrum = new Centrum();
         Bank bank = new Bank();
         centrum.addBank(bank);

@@ -5,21 +5,33 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4620078e-8c29-4060-b989-00cc0aefb1a3" name="Changes" comment="gotowe">
-      <change afterPath="$PROJECT_DIR$/src/main/java/wyjatki/WrongKwotaException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/wyjatki/WrongLenghtException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/wyjatki/WrongNazwaException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Archiwum — kopia.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Archiwum.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Lombok project PO.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ProjektBanku.rar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/podział.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Karta.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/Bank.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/Centrum.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/Firma.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/Firmytransportowe.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/Karta.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/KartaDebetowa.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/KartaKredytowa.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/Karta_Bankomatowa.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/KlientBanku.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/KlientCentrum.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/Konto.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/Main.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/Osoba.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/Sklep.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/Transakcja.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/ZakładyUsługowe.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/wyjatki/WrongKwotaException.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/wyjatki/WrongLenghtException.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/wyjatki/WrongNazwaException.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Bank.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Bank.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Centrum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Centrum.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Firma.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Firma.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Firmytransportowe.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Firmytransportowe.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/KartaDebetowa.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/KartaDebetowa.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/KartaKredytowa.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/KartaKredytowa.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Karta_Bankomatowa.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Karta_Bankomatowa.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/KlientCentrum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/KlientCentrum.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Sklep.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Sklep.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ZakładyUsługowe.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ZakładyUsługowe.java" afterDir="false" />
     </list>
     <list id="dfc5eecb-8cc7-4f83-87ed-e4449a5beeba" name="Changes by HP" comment="">
       <change afterPath="$PROJECT_DIR$/src/main/java/Osoba.java" afterDir="false" />
@@ -62,7 +74,11 @@
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
     "codeWithMe.voiceChat.enabledByDefault": "false",
-    "last_opened_file_path": "C:/Users/Michał/problematyczny folder/Pulpit/2sem/po/java/ProjektPO",
+    "last_opened_file_path": "C:/Users/Michał/problematyczny folder/Pulpit/4sem/java/1",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.0",
@@ -109,7 +125,8 @@
       <workItem from="1661705361268" duration="2919000" />
       <workItem from="1665299474123" duration="175000" />
       <workItem from="1678905436384" duration="14000" />
-      <workItem from="1678905794590" duration="106000" />
+      <workItem from="1678905794590" duration="1178000" />
+      <workItem from="1678994706412" duration="213000" />
     </task>
     <task id="LOCAL-00001" summary="gotowe">
       <created>1655673459861</created>
@@ -118,7 +135,14 @@
       <option name="project" value="LOCAL" />
       <updated>1655673459861</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="gotowe">
+      <created>1678906065698</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1678906065698</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

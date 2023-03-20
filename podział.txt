@@ -1,0 +1,9 @@
+Michał Zajkowski
+- Klasy: Centrum, Osoba, Bank, KlientBanku, Transakcja, Main, poprawa i dodanie czesci metod do klas Marcina
+- Połączenie klas
+- funkcjonalnosc zarzadzania firmami, zarzadzania kartami, obslugi zadan transakcjami, zapisu i odczytu do pliku, przeszukiwania archiwum
+- wyjatki
+Marcin Żamojda
+- Klasy: Konto, Karta, KartaDebetowa, KartaKredytowa, KartaBankomatowa
+Konrad Żukowski
+- Klasy: Firma, KlientCentrum, Sklep, ZakładyUsługowe, FirmyTransportowe
